@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { motion } from "framer-motion";
 import { analyzeSettlement, type SettlementAnalysis } from "../api/settlements";
 
@@ -8,19 +8,31 @@ const SETTLEMENT_IDS = [
 ];
 
 function Dashboard() {
+  const cache = useRef<Record<string, SettlementAnalysis>>({});
   const [selectedId, setSelectedId] = useState("SET0001");
   const [data, setData] = useState<SettlementAnalysis | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setLoading(true);
+  const cached = cache.current[selectedId];
+  if (cached) {
+    setData(cached);
     setError(null);
-    analyzeSettlement("quick", selectedId)
-      .then(setData)
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [selectedId]);
+    setLoading(false);
+    return;
+  }
+
+  setLoading(true);
+  setError(null);
+  analyzeSettlement("quick", selectedId)
+    .then((result) => {
+      cache.current[selectedId] = result;
+      setData(result);
+    })
+    .catch((err) => setError(err.message))
+    .finally(() => setLoading(false));
+}, [selectedId]);
 
   const discrepancies = data?.results.filter((r) => r.is_discrepancy) ?? [];
   const clean = data?.results.filter((r) => !r.is_discrepancy) ?? [];
@@ -53,7 +65,20 @@ function Dashboard() {
         ))}
       </div>
 
-      {loading && <p className="text-neutral-500">Analyzing {selectedId}...</p>}
+      {loading && (
+  <div className="animate-pulse">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+      <div className="h-24 bg-neutral-100 rounded-lg" />
+      <div className="h-24 bg-neutral-100 rounded-lg" />
+      <div className="h-24 bg-neutral-100 rounded-lg" />
+    </div>
+    <div className="h-6 w-48 bg-neutral-100 rounded mb-4" />
+    <div className="space-y-4">
+      <div className="h-28 bg-neutral-100 rounded-lg" />
+      <div className="h-28 bg-neutral-100 rounded-lg" />
+    </div>
+  </div>
+)}
       {error && <p className="text-red-600">Error: {error}</p>}
 
       {data && !loading && (
@@ -136,6 +161,7 @@ function DiscrepancyCard({
     confidence: number;
     explanation: string;
     recommended_action: string;
+    explanation_source?: string;
   };
 }) {
   return (
@@ -153,10 +179,21 @@ function DiscrepancyCard({
         </p>
       </div>
       <p className="text-neutral-700 text-sm mb-2">{result.explanation}</p>
-      <p className="text-sm text-black font-medium">
+      <p className="text-sm text-black font-medium mb-2">
         <span className="text-amber-700 font-bold">Recommended action: </span>
         {result.recommended_action}
       </p>
+      {result.explanation_source && (
+        <span
+          className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full ${
+            result.explanation_source === "ai"
+              ? "bg-amber-600 text-white"
+              : "bg-neutral-200 text-neutral-600"
+          }`}
+        >
+          {result.explanation_source === "ai" ? "✦ AI-generated" : "Template"}
+        </span>
+      )}
     </div>
   );
 }

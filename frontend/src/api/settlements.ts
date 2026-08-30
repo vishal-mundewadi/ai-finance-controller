@@ -10,6 +10,7 @@ export interface DiscrepancyResult {
   confidence: number;
   explanation: string;
   recommended_action: string;
+  explanation_source?: string;
 }
 
 export interface SettlementAnalysis {
