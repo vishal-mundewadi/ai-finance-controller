@@ -1,0 +1,121 @@
+payment_id,settlement_id,is_discrepancy,category,subtype,discrepancy_amount,confidence,explanation,recommended_action
+PAY00001,SET0001,True,REFUND_MISMATCH,FULL,745.58,0.95,"Payment was fully refunded to the customer, but the settlement still paid out the full amount.",Verify refund accounting — the full refund does not appear to have been netted out of the settlement payout. Recover the overpaid amount.
+PAY00002,SET0001,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00003,SET0001,True,MISSING_TRANSACTION,,732.3,1.0,Payment was captured successfully but never appears in the settlement batch.,Verify whether the transaction was omitted from the settlement batch. Escalate to the payment gateway if the settlement SLA has been exceeded.
+PAY00004,SET0001,True,FEE_TAX_MISMATCH,,13.28,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00005,SET0001,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00006,SET0001,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00007,SET0001,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00008,SET0001,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00009,SET0001,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00010,SET0001,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00011,SET0001,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00012,SET0001,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00013,SET0002,True,DELAYED_SETTLEMENT,,745.58,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00014,SET0002,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00015,SET0002,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00016,SET0002,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00017,SET0002,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00018,SET0002,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00019,SET0002,True,DELAYED_SETTLEMENT,,2485.25,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00020,SET0002,True,REFUND_MISMATCH,FULL,994.1,0.95,"Payment was fully refunded to the customer, but the settlement still paid out the full amount.",Verify refund accounting — the full refund does not appear to have been netted out of the settlement payout. Recover the overpaid amount.
+PAY00021,SET0002,True,FEE_TAX_MISMATCH,,132.75,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00022,SET0002,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00023,SET0002,True,MISSING_TRANSACTION,,9941.0,1.0,Payment was captured successfully but never appears in the settlement batch.,Verify whether the transaction was omitted from the settlement batch. Escalate to the payment gateway if the settlement SLA has been exceeded.
+PAY00024,SET0002,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00025,SET0003,True,FEE_TAX_MISMATCH,,4.43,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00026,SET0003,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00027,SET0003,True,DELAYED_SETTLEMENT,,732.3,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00028,SET0003,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00029,SET0003,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00030,SET0003,True,REFUND_MISMATCH,FULL,734.07,0.95,"Payment was fully refunded to the customer, but the settlement still paid out the full amount.",Verify refund accounting — the full refund does not appear to have been netted out of the settlement payout. Recover the overpaid amount.
+PAY00031,SET0003,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00032,SET0003,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00033,SET0003,True,DELAYED_SETTLEMENT,,488.2,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00034,SET0003,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00035,SET0003,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00036,SET0003,True,DELAYED_SETTLEMENT,,745.58,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00037,SET0004,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00038,SET0004,True,DELAYED_SETTLEMENT,,14911.5,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00039,SET0004,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00040,SET0004,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00041,SET0004,True,REFUND_MISMATCH,FULL,14646.0,0.95,"Payment was fully refunded to the customer, but the settlement still paid out the full amount.",Verify refund accounting — the full refund does not appear to have been netted out of the settlement payout. Recover the overpaid amount.
+PAY00042,SET0004,True,FEE_TAX_MISMATCH,,22.12,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00043,SET0004,True,FEE_TAX_MISMATCH,,1.47,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00044,SET0004,True,MISSING_TRANSACTION,,489.38,1.0,Payment was captured successfully but never appears in the settlement batch.,Verify whether the transaction was omitted from the settlement batch. Escalate to the payment gateway if the settlement SLA has been exceeded.
+PAY00045,SET0004,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00046,SET0004,True,DELAYED_SETTLEMENT,,9941.0,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00047,SET0004,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00048,SET0004,True,MISSING_TRANSACTION,,9787.6,1.0,Payment was captured successfully but never appears in the settlement batch.,Verify whether the transaction was omitted from the settlement batch. Escalate to the payment gateway if the settlement SLA has been exceeded.
+PAY00049,SET0005,True,REFUND_MISMATCH,PARTIAL,125.0,0.95,"Payment was partially refunded, but the settlement was not adjusted for the refund.",Reconcile the remaining refunded amount — it was not netted out of the settlement payout. Recover the outstanding portion.
+PAY00050,SET0005,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00051,SET0005,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00052,SET0005,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00053,SET0005,True,DELAYED_SETTLEMENT,,488.2,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00054,SET0005,True,DELAYED_SETTLEMENT,,1491.15,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00055,SET0005,True,MISSING_TRANSACTION,,497.05,1.0,Payment was captured successfully but never appears in the settlement batch.,Verify whether the transaction was omitted from the settlement batch. Escalate to the payment gateway if the settlement SLA has been exceeded.
+PAY00056,SET0005,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00057,SET0005,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00058,SET0005,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00059,SET0005,True,REFUND_MISMATCH,PARTIAL,3750.0,0.95,"Payment was partially refunded, but the settlement was not adjusted for the refund.",Reconcile the remaining refunded amount — it was not netted out of the settlement payout. Recover the outstanding portion.
+PAY00060,SET0005,True,DELAYED_SETTLEMENT,,14681.4,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00061,SET0006,True,MISSING_TRANSACTION,,734.07,1.0,Payment was captured successfully but never appears in the settlement batch.,Verify whether the transaction was omitted from the settlement batch. Escalate to the payment gateway if the settlement SLA has been exceeded.
+PAY00062,SET0006,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00063,SET0006,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00064,SET0006,True,REFUND_MISMATCH,PARTIAL,600.0,0.95,"Payment was partially refunded, but the settlement was not adjusted for the refund.",Reconcile the remaining refunded amount — it was not netted out of the settlement payout. Recover the outstanding portion.
+PAY00065,SET0006,True,REFUND_MISMATCH,FULL,976.4,0.95,"Payment was fully refunded to the customer, but the settlement still paid out the full amount.",Verify refund accounting — the full refund does not appear to have been netted out of the settlement payout. Recover the overpaid amount.
+PAY00066,SET0006,True,FEE_TAX_MISMATCH,,6.65,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00067,SET0006,True,DELAYED_SETTLEMENT,,732.3,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00068,SET0006,True,REFUND_MISMATCH,PARTIAL,187.5,0.95,"Payment was partially refunded, but the settlement was not adjusted for the refund.",Reconcile the remaining refunded amount — it was not netted out of the settlement payout. Recover the outstanding portion.
+PAY00069,SET0006,True,FEE_TAX_MISMATCH,,398.25,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00070,SET0006,True,FEE_TAX_MISMATCH,,17.7,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00071,SET0006,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00072,SET0006,True,FEE_TAX_MISMATCH,,8.85,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00073,SET0007,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00074,SET0007,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00075,SET0007,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00076,SET0007,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00077,SET0007,True,FEE_TAX_MISMATCH,,17.7,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00078,SET0007,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00079,SET0007,True,REFUND_MISMATCH,PARTIAL,7500.0,0.95,"Payment was partially refunded, but the settlement was not adjusted for the refund.",Reconcile the remaining refunded amount — it was not netted out of the settlement payout. Recover the outstanding portion.
+PAY00080,SET0007,True,REFUND_MISMATCH,PARTIAL,1250.0,0.95,"Payment was partially refunded, but the settlement was not adjusted for the refund.",Reconcile the remaining refunded amount — it was not netted out of the settlement payout. Recover the outstanding portion.
+PAY00081,SET0007,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00082,SET0007,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00083,SET0007,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00084,SET0007,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00085,SET0008,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00086,SET0008,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00087,SET0008,True,DELAYED_SETTLEMENT,,1473.45,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00088,SET0008,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00089,SET0008,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00090,SET0008,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00091,SET0008,True,REFUND_MISMATCH,FULL,734.07,0.95,"Payment was fully refunded to the customer, but the settlement still paid out the full amount.",Verify refund accounting — the full refund does not appear to have been netted out of the settlement payout. Recover the overpaid amount.
+PAY00092,SET0008,True,FEE_TAX_MISMATCH,,11.8,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00093,SET0008,True,DELAYED_SETTLEMENT,,4882.0,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00094,SET0008,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00095,SET0008,True,DELAYED_SETTLEMENT,,14681.4,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00096,SET0008,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00097,SET0009,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00098,SET0009,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00099,SET0009,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00100,SET0009,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00101,SET0009,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00102,SET0009,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00103,SET0009,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00104,SET0009,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00105,SET0009,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00106,SET0009,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00107,SET0009,True,DELAYED_SETTLEMENT,,497.05,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00108,SET0009,True,FEE_TAX_MISMATCH,,159.3,0.9,Gateway fee/tax charged does not match the expected rate for this payment method.,Audit the gateway fee calculation for this payment method; raise a fee dispute with the gateway if the overcharge is confirmed.
+PAY00109,SET0010,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00110,SET0010,False,NO_ACTION_REQUIRED,FAILED_PAYMENT_EXCLUDED,0.0,1.0,Payment failed and was correctly excluded from expected settlement.,No action required.
+PAY00111,SET0010,True,REFUND_MISMATCH,FULL,9941.0,0.95,"Payment was fully refunded to the customer, but the settlement still paid out the full amount.",Verify refund accounting — the full refund does not appear to have been netted out of the settlement payout. Recover the overpaid amount.
+PAY00112,SET0010,True,DELAYED_SETTLEMENT,,9941.0,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00113,SET0010,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00114,SET0010,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00115,SET0010,True,DELAYED_SETTLEMENT,,982.3,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00116,SET0010,True,DELAYED_SETTLEMENT,,1964.6,0.95,Payment was captured successfully but settled after the expected T+1-day cutoff.,No recovery needed yet — confirm it lands in the next batch. Escalate to the gateway only if the T+1 settlement SLA is breached.
+PAY00117,SET0010,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00118,SET0010,False,NO_ACTION_REQUIRED,CLEAN,0.0,0.9,Settlement matches the expected amount within tolerance.,No action required.
+PAY00119,SET0010,False,NO_ACTION_REQUIRED,REFUND_DELAYED,0.0,0.9,"A refund exists but was processed after this settlement's cutoff, so no adjustment is due yet.",No action required this cycle.
+PAY00120,SET0010,True,REFUND_MISMATCH,PARTIAL,300.0,0.95,"Payment was partially refunded, but the settlement was not adjusted for the refund.",Reconcile the remaining refunded amount — it was not netted out of the settlement payout. Recover the outstanding portion.

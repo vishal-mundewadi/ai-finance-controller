@@ -35,8 +35,8 @@ def main():
     parser.add_argument("--preset", default="quick")
     args = parser.parse_args()
 
-    gt_rows = load_rows(f"{args.preset}_ground_truth.csv")
-    pred_rows = load_rows(f"{args.preset}_predictions.csv")
+    gt_rows = load_rows(f"data/{args.preset}/ground_truth.csv")
+    pred_rows = load_rows(f"data/{args.preset}/predictions.csv")
 
     gt_by_id = {r["payment_id"]: r for r in gt_rows}
     pred_by_id = {r["payment_id"]: r for r in pred_rows}

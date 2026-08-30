@@ -200,13 +200,13 @@ def main():
     parser.add_argument("--preset", default="quick")
     args = parser.parse_args()
 
-    payments = load_rows(f"{args.preset}_payments.csv")
-    refunds = load_rows(f"{args.preset}_refunds.csv")
-    settlements = load_rows(f"{args.preset}_settlements.csv")
+    payments = load_rows(f"data/{args.preset}/payments.csv")
+    refunds = load_rows(f"data/{args.preset}/refunds.csv")
+    settlements = load_rows(f"data/{args.preset}/settlements.csv")
 
     results = reconcile(payments, refunds, settlements)
 
-    out_path = f"{args.preset}_predictions.csv"
+    out_path = f"data/{args.preset}/predictions.csv"
     with open(out_path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(results[0].keys()))
         writer.writeheader()
