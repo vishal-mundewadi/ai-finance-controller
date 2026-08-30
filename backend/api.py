@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from reconciliation_engine import reconcile, load_rows
+from ai_explainer import generate_ai_explanations
 
 app = FastAPI(title="AI Settlement Investigator")
 
@@ -29,8 +30,22 @@ def analyze_settlement(preset: str, settlement_id: str):
         raise HTTPException(status_code=404, detail=f"No payments found for {settlement_id}")
 
     results = reconcile(batch_payments, refunds, settlements)
-
     discrepancies = [r for r in results if r["is_discrepancy"]]
+
+    # Ask the LLM to narrate the already-detected discrepancies.
+    # If it fails for any reason, ai_map stays empty and we silently
+    # keep each result's original template explanation/action.
+    ai_map = generate_ai_explanations(discrepancies)
+
+    for r in results:
+        ai = ai_map.get(r["payment_id"])
+        if ai:
+            r["explanation"] = ai["explanation"]
+            r["recommended_action"] = ai["action"]
+            r["explanation_source"] = "ai"
+        else:
+            r["explanation_source"] = "template"
+
     total_discrepancy_amount = round(sum(r["discrepancy_amount"] for r in discrepancies), 2)
 
     return {
