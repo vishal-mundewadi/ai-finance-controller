@@ -1,9 +1,16 @@
+import { useState } from "react";
+import BootIntro from "./components/BootIntro";
+import Dashboard from "./components/Dashboard";
+
 function App() {
+  const [booted, setBooted] = useState(false);
+
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center">
-      <h1 className="text-6xl font-bold text-black">Tailwind is working</h1>
-    </div>
-  )
+    <>
+      {!booted && <BootIntro onComplete={() => setBooted(true)} />}
+      {booted && <Dashboard />}
+    </>
+  );
 }
 
-export default App
+export default App;
