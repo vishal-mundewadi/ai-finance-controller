@@ -40,6 +40,8 @@ ACTIONS = {
     ("REFUND_MISMATCH", "PARTIAL"):
         "Reconcile the remaining refunded amount — it was not netted out of "
         "the settlement payout. Recover the outstanding portion.",
+    ("IMPOSSIBLE_SETTLEMENT_DATE", None):
+        "Investigate the settlement record and verify the payment and settlement timestamps.",
     ("NO_ACTION_REQUIRED", "FAILED_PAYMENT_EXCLUDED"): "No action required.",
     ("NO_ACTION_REQUIRED", "REFUND_DELAYED"): "No action required this cycle.",
     ("NO_ACTION_REQUIRED", "CLEAN"): "No action required.",
@@ -56,6 +58,8 @@ EXPLANATIONS = {
         "Payment was fully refunded to the customer, but the settlement still paid out the full amount.",
     ("REFUND_MISMATCH", "PARTIAL"):
         "Payment was partially refunded, but the settlement was not adjusted for the refund.",
+    ("IMPOSSIBLE_SETTLEMENT_DATE", None):
+        "Settlement date occurs before the payment date, indicating a data-integrity issue.",
     ("NO_ACTION_REQUIRED", "FAILED_PAYMENT_EXCLUDED"):
         "Payment failed and was correctly excluded from expected settlement.",
     ("NO_ACTION_REQUIRED", "REFUND_DELAYED"):
@@ -140,6 +144,13 @@ def reconcile(payments, refunds, settlements):
         settled_amount = float(srow["settled_amount"])
         settled_date = parse_date(srow["settlement_date"])
         fee_charged = float(srow["fee_charged"])
+
+        # ---- Impossible settlement date: settled before it was even paid ----
+        if settled_date < payment_date:
+            results.append(make_result(payment_id, settlement_id, True,
+                                        "IMPOSSIBLE_SETTLEMENT_DATE", None,
+                                        base_expected, 0.95))
+            continue
 
         # ---- Delayed settlement: landed after the T+N cutoff ----
         if settled_date > expected_cutoff:

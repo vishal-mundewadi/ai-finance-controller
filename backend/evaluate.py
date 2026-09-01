@@ -17,6 +17,16 @@ GT_TO_CATEGORY = {
     "MISSING_TRANSACTION": ("MISSING_TRANSACTION", None),
     "DELAYED_SETTLEMENT": ("DELAYED_SETTLEMENT", None),
     "FEE_TAX_MISMATCH": ("FEE_TAX_MISMATCH", None),
+
+    # Hard-eval categories
+    # Under our strict audit policy, even a small non-zero
+    # fee variance is considered a fee/tax discrepancy.
+    "MINOR_FEE_VARIANCE": ("FEE_TAX_MISMATCH", None),
+
+    # The baseline engine does not currently detect impossible
+    # settlement dates, so this maps to its own category.
+    "IMPOSSIBLE_SETTLEMENT_DATE": ("IMPOSSIBLE_SETTLEMENT_DATE", None),
+
     "REFUND_MISMATCH_FULL": ("REFUND_MISMATCH", "FULL"),
     "REFUND_MISMATCH_PARTIAL": ("REFUND_MISMATCH", "PARTIAL"),
     "NO_ISSUE_FAILED_PAYMENT_EXCLUDED": ("NO_ACTION_REQUIRED", "FAILED_PAYMENT_EXCLUDED"),
