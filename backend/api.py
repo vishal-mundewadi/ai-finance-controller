@@ -21,7 +21,7 @@ def get_dataset(preset: str):
     return payments, refunds, settlements
 
 
-@app.get("/settlements/{preset}/{settlement_id}/analyze")
+@app.get("/api/settlements/{preset}/{settlement_id}/analyze")
 def analyze_settlement(preset: str, settlement_id: str):
     payments, refunds, settlements = get_dataset(preset)
 
@@ -57,6 +57,6 @@ def analyze_settlement(preset: str, settlement_id: str):
     }
 
 
-@app.get("/")
+@app.get("/api/")
 def root():
     return {"status": "AI Settlement Investigator API is running"}
